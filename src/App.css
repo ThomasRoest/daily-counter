@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #222;
-  height: 20px;
-  padding: 20px;
+  /* height: 20px; */
+  padding: 10px;
   color: white;
 }
 
@@ -37,6 +37,16 @@
   flex: 1 1 auto;
 }
 
+.counter-item:first-child {
+  color: blue;
+  flex: 1 1 30px;
+}
+
 .btn-addnew {
   margin-top: 20px;
+}
+
+.counter-count { 
+  font-weight: bold; 
+  font-size: 1.3em;
 }

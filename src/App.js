@@ -4,7 +4,7 @@ import "./App.css";
 const Counter = ({id, day, count, handleClick}) =>
     <div className="counter">
       <span className="counter-item">{day}</span>
-      <span className="counter-item">{count}</span>
+      <span className="counter-item counter-count">{count}</span>
       <button className="counter-item btn btn-primary"onClick={(e) => handleClick(e, id)}>Click</button>
     </div>
 
