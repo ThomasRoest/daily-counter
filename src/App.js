@@ -8,6 +8,7 @@ class ListItem extends Component {
     const { id, day, count, handleClick } = this.props;
     return (
       <div className="counter">
+      <button onClick={(e) => this.props.deleteDay(e, id)}>X</button>
         <span className="counter-item">{day}</span>
         <span className="counter-item counter-count">{count}</span>
         <button
@@ -27,12 +28,14 @@ class App extends Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.addNewDay = this.addNewDay.bind(this);
+    this.deleteDay = this.deleteDay.bind(this);
     this.state = {
       days: []
     };
   }
 
   componentDidMount() {
+    console.log("component did mount")
     const localStorageRef = localStorage.getItem('daily-counter-app')
     if(localStorageRef) {
       this.setState({ days: JSON.parse(localStorageRef) })
@@ -40,6 +43,7 @@ class App extends Component {
   }
 
   componentDidUpdate() {
+    console.log('component did update')
     localStorage.setItem('daily-counter-app', JSON.stringify(this.state.days))
   }
 
@@ -51,9 +55,20 @@ class App extends Component {
   }
 
   addNewDay() {
-    const newDay = { id: Date.now(), date: 'date must be string', count: 0 };
+    const newDay = { id: Date.now(), date: new Date().toDateString(), count: 0 };
     const updateddays = [...this.state.days, newDay];
     this.setState({ days: updateddays });
+  }
+
+  deleteDay(e, id) {
+    console.log(`${id}`)
+    
+    const currentDays = [...this.state.days];
+    
+    const days = currentDays.filter(item =>
+      item.id !== id
+    )
+    this.setState({ days })
   }
 
   render() {
@@ -68,6 +83,7 @@ class App extends Component {
               day={day.date}
               count={day.count}
               handleClick={this.handleClick}
+              deleteDay={this.deleteDay}
             />
           ))}
         </div>
