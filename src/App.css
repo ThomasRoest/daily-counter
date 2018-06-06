@@ -28,9 +28,13 @@
 }
 
 .counter {
-  background: lightblue;
+  border-top: 1px solid lightgrey;
   display: flex;
   padding: 10px 5px 10px 5px;
+}
+
+.counter:last-child {
+  border-bottom: 1px solid lightgrey;
 }
 
 .counter-item {

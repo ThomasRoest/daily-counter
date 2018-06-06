@@ -8,11 +8,11 @@ class ListItem extends Component {
     const { id, day, count, handleClick } = this.props;
     return (
       <div className="counter">
-      <button onClick={(e) => this.props.deleteDay(e, id)}>X</button>
+      <button className="ui red button" onClick={(e) => this.props.deleteDay(e, id)}>X</button>
         <span className="counter-item">{day}</span>
         <span className="counter-item counter-count">{count}</span>
         <button
-          className="counter-item btn btn-primary"
+          className="counter-item ui blue button"
           onClick={e => handleClick(e, id)}
         >
           Click
@@ -88,7 +88,7 @@ class App extends Component {
           ))}
         </div>
         <button
-          className="btn btn-success btn-lg btn-addnew"
+          className="ui green button btn-addnew"
           onClick={this.addNewDay}
         >
           add new day
